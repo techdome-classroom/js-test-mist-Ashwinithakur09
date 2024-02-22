@@ -1,11 +1,15 @@
-/**
- * @param {string} s
- * @return {boolean}
- */
-var isValid = function(s) {
+def isValid(s: str) -> bool:
+    stack = []
+    mapping = {')': '(', '}': '{', ']': '['}
     
-};
-
-module.exports = { isValid };
+    for char in s:
+        if char in mapping:
+            top_element = stack.pop() if stack else '#'
+            if mapping[char] != top_element:
+                return False
+        else:
+            stack.append(char)
+    
+    return not stack
 
 
